@@ -5,6 +5,8 @@ const Header = () => {
 
     const menuItems = <>
            <li><Link to="/">Home</Link></li>
+           <li><Link to="/login">Login</Link></li>
+           
     </>
     return (
         <div className="navbar bg-base-100 container mx-auto">
