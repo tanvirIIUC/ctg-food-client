@@ -9,7 +9,7 @@ const Services = () => {
         .then(res=>res.json())
         .then(data=>setService(data))
     },[])
-    console.log(services)
+    
     return (
         <div className='container mx-auto'>
             <div className='text-center'>
