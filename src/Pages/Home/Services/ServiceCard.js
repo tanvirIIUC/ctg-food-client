@@ -12,7 +12,7 @@ const ServiceCard = ({service}) => {
             </div>
            
             <div className="card-actions justify-end">
-                <button className="btn btn-primary">Learn now!</button>
+                <button className="btn btn-primary">See more</button>
             </div>
         </div>
     </div>
