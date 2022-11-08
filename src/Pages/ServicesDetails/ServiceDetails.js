@@ -24,6 +24,7 @@ const ServiceDetails = () => {
             </div>
             {/*  Review section */}
             <div>
+            
                <ReviewAdd></ReviewAdd>
             </div>
 
