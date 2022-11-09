@@ -17,6 +17,7 @@ const ReviewAdd = () => {
         
         const review = {
             service: _id,
+            ptitle:title,
             customer:user?.displayName || 'unregister',
             photo : user?.photoURL,
             email,
@@ -47,7 +48,7 @@ const ReviewAdd = () => {
         <div>
              <form onSubmit={handleReview}>
                 <div>
-                    <h1>Review Add</h1>
+                    <h1 className='text-center font-bold text-3xl py-5'>Review Add</h1>
                 <input type="text" placeholder="Type here" defaultValue={user?.email} className="input input-bordered input-accent w-full" readOnly/>
                 <textarea name='comment' className="textarea textarea-bordered w-1/2 my-3 block" placeholder="Comment" required></textarea>
                 </div>

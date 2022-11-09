@@ -14,7 +14,7 @@ const ReviewShow = ({ id }) => {
     console.log(results)
     return (
         <div>
-             <h1 className='text-center font-bold text-3xl'>Review</h1>
+             <h1 className='text-center font-bold text-3xl py-5'>Review</h1>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>
