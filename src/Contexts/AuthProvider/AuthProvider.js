@@ -11,11 +11,12 @@ const AuthProvider = ({ children }) => {
     const [loader, setLoader] = useState(true);
     //   create user 
     const createUser = (email, password) => {
-
+          setLoader(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
     // log in
     const logIn = (email, password) => {
+        setLoader(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -39,6 +40,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             console.log(currentUser);
             setUser(currentUser);
+            setLoader(false);
 
         });
 
@@ -52,6 +54,7 @@ const AuthProvider = ({ children }) => {
         user,
         logIn,
         createUser,
+        loader
     }
 
     return (

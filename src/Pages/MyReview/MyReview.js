@@ -2,9 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import MyReviewRow from './MyReviewRow';
 
-const MyReview = () => {
+const MyReview = () => {                                                           
     const { user } = useContext(AuthContext);
-    const [review, setReview] = useState({})
+    const [review, setReview] = useState([])
     console.log(user)
 
     useEffect(() => {
@@ -12,6 +12,24 @@ const MyReview = () => {
             .then(res => res.json())
             .then(data => setReview(data))
     }, [user?.email])
+
+    const handleDelete = id =>{
+        const proceed = window.confirm('Are you sure,You want to delete review?');
+        if(proceed){
+         fetch(`http://localhost:5000/myReview/${id}`,{
+             method: 'DELETE'
+         })
+         .then(res =>res.json())
+         .then(data =>{
+             console.log(data);
+             if(data.deletedCount>0){
+                alert('delete successfully');
+                const remaining = review.filter( revi => revi._id==id);
+                setReview(remaining);
+             }
+         })
+        }
+     }
     return (
         <div className='container mx-auto'>
             <h1>u have {review.length}</h1>
@@ -34,6 +52,7 @@ const MyReview = () => {
                         review.map(rev => <MyReviewRow
                             key={rev._id}
                             result={rev}
+                            handleDelete={handleDelete}
                         ></MyReviewRow>)
                     }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
-const MyReviewRow = ({result}) => {
-    const { customer, email, photo, reviewCom,service } = result;
+const MyReviewRow = ({result,handleDelete}) => {
+    const { customer, email, photo, reviewCom,service,_id } = result;
     const [revservice,setRevservice]= useState({})
 
     useEffect(()=>{
@@ -9,11 +9,13 @@ const MyReviewRow = ({result}) => {
         .then(res =>res.json())
         .then(data => setRevservice(data))
     },[service])
+
+  
     return (
         <tr>
             <th>
                 <label>
-                    <button className='btn btn-square btn-outline'>X</button>
+                    <button onClick={()=>handleDelete(_id)} className='btn btn-square btn-outline'>X</button>
                 </label>
             </th>
             <td>
