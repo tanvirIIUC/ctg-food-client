@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const ReviewAdd = () => {
@@ -46,7 +46,9 @@ const ReviewAdd = () => {
     }
     return (
         <div>
-             <form onSubmit={handleReview}>
+            {
+                user?.email?
+                <form onSubmit={handleReview}>
                 <div>
                     <h1 className='text-center font-bold text-3xl py-5'>Review Add</h1>
                 <input type="text" placeholder="Type here" defaultValue={user?.email} className="input input-bordered input-accent w-full" readOnly/>
@@ -55,6 +57,16 @@ const ReviewAdd = () => {
                 
                 <input  className="btn btn-wide my-4" type="submit" value='submit review' />
             </form>
+                :
+                <>
+                <h1>Please Log in to add review</h1>
+                <Link to='/login'> Log in</Link>
+                </>
+                
+                
+
+            }
+             
 
         </div>
     );

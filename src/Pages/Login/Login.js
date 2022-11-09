@@ -1,11 +1,20 @@
+import { clear } from '@testing-library/user-event/dist/clear';
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import loginimg from '../../Assets/login.jpg'
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+
+
 
 const Login = () => {
    
     const {logIn} = useContext(AuthContext)
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
     const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
@@ -14,6 +23,10 @@ const Login = () => {
         logIn(email,password)
         .then(result=>{
           const  user = result.user;
+          alert('log in successfull');
+          navigate(from, {replace : true})
+          form.reset();
+          
         })
         .catch(err=>console.error(err))
     }
@@ -24,7 +37,7 @@ const Login = () => {
                 <img className='w-3/4' src={loginimg} alt="" />
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100 py-20">
-                <h1 className="text-5xl text-center font-bold">Sign Up</h1>
+                <h1 className="text-5xl text-center font-bold">Log In</h1>
                 <form onSubmit={handleSubmit} className="card-body">
                     
                     <div className="form-control">
