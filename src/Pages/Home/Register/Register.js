@@ -4,13 +4,15 @@ import regimg from '../../../Assets/login.jpg'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const {createUser}= useContext(AuthContext);
+    const {createUser,updateUserProfile}= useContext(AuthContext);
     const handleSignUp = event =>{
 
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
+        const name = form.name.value;
+        const photoURL = form.photoURL.value;
         
         
         createUser(email, password)
@@ -19,9 +21,20 @@ const Register = () => {
             console.log(user);
             alert('Register successfull')
             form.reset();
+            handleUpdateUserProfile(name,photoURL)
         })
         .catch(err => console.error(err));
     }
+
+    const handleUpdateUserProfile =(name,photoURL) =>{
+        const profile = {
+          displayName : name,
+          photoURL : photoURL
+        }
+        updateUserProfile(profile)
+        .then(() =>{ })
+        .catch(error =>console.error(error));
+      }
    
     return (
         <div className="hero w-full my-20">
@@ -36,7 +49,13 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text">Name</span>
                         </label>
-                        <input type="text" name='name' placeholder="Your Name" className="input input-bordered" />
+                        <input type="text" name='name' placeholder="Your Name" className="input input-bordered" required/>
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Image</span>
+                        </label>
+                        <input type="text" name='photoURL' placeholder="Image" className="input input-bordered" required />
                     </div>
                     <div className="form-control">
                         <label className="label">
@@ -52,7 +71,7 @@ const Register = () => {
                         
                     </div>
                     <div className="form-control mt-6">
-                        <input className="btn btn-primary" type="submit" value="Sign Up" />
+                        <input className="btn btn-primary" type="submit" value="Register" />
                     </div>
                 </form>
                 <p className='text-center'>Already have an account? <Link to='/login'  
