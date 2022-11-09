@@ -24,7 +24,7 @@ const MyReview = () => {
              console.log(data);
              if(data.deletedCount>0){
                 alert('delete successfully');
-                const remaining = review.filter( revi => revi._id==id);
+                const remaining = review.filter( revi => revi._id!==id);
                 setReview(remaining);
              }
          })
@@ -67,7 +67,7 @@ const MyReview = () => {
             </div>
                     </>
                 :
-                <h1 className='font-bold text-2xl text-center'> There is no review</h1>
+                <h1 className='font-bold text-2xl text-center'> No reviews were added</h1>
 
             }
            

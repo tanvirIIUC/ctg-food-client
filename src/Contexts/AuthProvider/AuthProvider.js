@@ -3,10 +3,13 @@ import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWith
 import app from '../../Firebase/Firebase.confige';
 
 
+
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
+   
+
     const [user, setUser] = useState(null);
     const [loader, setLoader] = useState(true);
     //   create user 
@@ -27,13 +30,11 @@ const AuthProvider = ({ children }) => {
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
-            // User is signed in, see docs for a list of available properties
-            // https://firebase.google.com/docs/reference/js/firebase.User
+           
             const uid = user.uid;
-            // ...
+            
         } else {
-            // User is signed out
-            // ...
+            
         }
     }
     )
