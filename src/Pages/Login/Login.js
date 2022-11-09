@@ -1,5 +1,5 @@
 import { clear } from '@testing-library/user-event/dist/clear';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import loginimg from '../../Assets/login.jpg'
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
@@ -7,6 +7,7 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 
 const Login = () => {
+    
    
     const {logIn} = useContext(AuthContext)
 
@@ -27,8 +28,14 @@ const Login = () => {
           navigate(from, {replace : true})
           form.reset();
           
+          
         })
-        .catch(err=>console.error(err))
+        .catch(err=>{
+            console.error(err)
+            alert('error please try again')
+            form.reset();
+            
+        })
     }
     return (
         <div className="hero w-full my-20">
@@ -55,7 +62,9 @@ const Login = () => {
                     </div>
                     <div className="form-control mt-6">
                         <input className="btn btn-primary" type="submit" value="Sign in" />
+                        
                     </div>
+                    
                 </form>
                 <p className='text-center'>Already haven't an account? <Link to='/register' className='text-orange-600 font-bold'>Register</Link> </p>
             </div>

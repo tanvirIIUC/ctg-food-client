@@ -31,9 +31,11 @@ const MyReview = () => {
         }
      }
     return (
-        <div className='container mx-auto'>
-            <h1>u have {review.length}</h1>
-            <div className="overflow-x-auto w-full">
+        <div className='container mx-auto my-10'>
+            {
+                review.length?
+                    <>
+                     <div className="overflow-x-auto w-full">
                 <table className="table w-full">
 
                     <thead>
@@ -63,6 +65,13 @@ const MyReview = () => {
 
                 </table>
             </div>
+                    </>
+                :
+                <h1 className='font-bold text-2xl text-center'> There is no review</h1>
+
+            }
+           
+           
 
         </div>
     );

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 const Header = () => {
+  
 
   const { user, logOut } = useContext(AuthContext);
   const signOut = () => {
@@ -15,6 +16,7 @@ const Header = () => {
       user?.email ?
         <>
           <li><Link to="/myReview">MyReview</Link></li>
+          <li><Link to="/addfood">Add Food</Link></li>
           <li><Link className='me-2' onClick={signOut}> Logout</Link></li>
         </>
         :
