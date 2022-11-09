@@ -4,7 +4,7 @@ import aboutPic from '../../../Assets/about.jpg'
 const About = () => {
     return (
         <div className='container mx-auto my-10'>
-            <h1 className='text-center font-bold text-2xl'>About Us</h1>
+            <h1 className='text-center font-bold text-2xl my-5'>About Us</h1>
             <div className="hero  bg-base-200 ">
 
                 <div className="hero-content flex-col lg:flex-row">

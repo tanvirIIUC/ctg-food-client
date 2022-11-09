@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
+import Allservice from "../../Pages/AllServices/Allservice";
 import Blogs from "../../Pages/Blogs/Blogs";
 import Home from "../../Pages/Home/Home/Home";
 import Register from "../../Pages/Home/Register/Register";
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
         {
             path:'/',
             element:<Home></Home>
+        },
+        {
+            path:'/allservice',
+            element:<Allservice></Allservice>
         },
         {
             path:'/login',

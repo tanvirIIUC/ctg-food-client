@@ -1,0 +1,35 @@
+import React, { useEffect, useState } from 'react';
+import ServiceCard from '../Home/Services/ServiceCard';
+
+const Allservice = () => {
+    const [services,setService]= useState([]);
+
+    useEffect(()=>{
+        fetch('http://localhost:5000/services')
+        .then(res=>res.json())
+        .then(data=>setService(data))
+    },[])
+
+    return (
+        <div className='container mx-auto'>
+        <div className='text-center'>
+            
+            <h1 className='text-5xl font-bold'>Our Special Dishes</h1>
+            <p className='my-3'>Are you hungry? Did you have a long and stressful day? Interested in getting a cheesy pizza delivered to your office or looking to avoid the weekly shop?</p>
+        </div>
+        <div className='grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 my-10'>
+            
+            {
+                services.map(service=><ServiceCard
+                    key={service._id}
+                    service={service}
+                ></ServiceCard>)  
+            }
+        </div>
+        
+        
+    </div>
+    );
+};
+
+export default Allservice;
