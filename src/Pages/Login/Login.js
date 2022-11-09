@@ -3,18 +3,33 @@ import React, { useContext, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import loginimg from '../../Assets/login.jpg'
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
+import { AiOutlineGoogle } from 'react-icons/ai';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 
 
 const Login = () => {
     
    
-    const {logIn} = useContext(AuthContext)
+    const {logIn,providerLogin} = useContext(AuthContext)
 
     const navigate = useNavigate();
     const location = useLocation();
 
     const from = location.state?.from?.pathname || '/';
+
+    const googleProvider = new GoogleAuthProvider();
+   
+
+    const handleGoogleSignIn = () =>{
+        providerLogin(googleProvider)
+        .then(result =>{
+            const user = result.user;
+            navigate(from,{replace: true});
+            // console.log(user);
+        })
+        .catch(error =>console.error(error))
+    }
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -36,6 +51,8 @@ const Login = () => {
             form.reset();
             
         })
+
+        
     }
     return (
         <div className="hero w-full my-20">
@@ -60,8 +77,9 @@ const Login = () => {
                         <input type="password" name='password' placeholder="password" className="input input-bordered" required/>
                         
                     </div>
-                    <div className="form-control mt-6">
+                    <div className="form-control mt-6 ">
                         <input className="btn btn-primary" type="submit" value="Sign in" />
+                        <p className='text-center mt-4'>login with  <button onClick={handleGoogleSignIn} className='text-orange-600 font-bold '><AiOutlineGoogle /></button> </p>
                         
                     </div>
                     
