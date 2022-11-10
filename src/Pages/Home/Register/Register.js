@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import regimg from '../../../Assets/login.jpg'
 import { AuthContext } from '../../../Contexts/AuthProvider/AuthProvider';
+import Spinner from '../../Spinner/Spinner';
 
 const Register = () => {
-    const {createUser,updateUserProfile}= useContext(AuthContext);
+    const {createUser,updateUserProfile,loader}= useContext(AuthContext);
     const handleSignUp = event =>{
 
         event.preventDefault();
@@ -38,6 +39,7 @@ const Register = () => {
    
     return (
         <div className="hero w-full my-20">
+             <h1 className=''>{loader && <Spinner></Spinner>}</h1>
         <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
             <div className="text-center lg:text-left">
                 <img className='w-3/4' src={regimg} alt="" />

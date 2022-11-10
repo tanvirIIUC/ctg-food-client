@@ -1,6 +1,6 @@
 # CTG FOOD
 
-Live website link : [CTG FOOD](https://pi-acadamy.web.app/).
+Live website link : [CTG FOOD](https://ctg-food.web.app/).
 
 ## Description :
 

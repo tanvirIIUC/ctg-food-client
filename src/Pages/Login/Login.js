@@ -6,13 +6,15 @@ import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 import { AiOutlineGoogle } from 'react-icons/ai';
 import { GoogleAuthProvider } from 'firebase/auth';
 import useTitle from '../../hooks/useTitle';
+import Spinner from '../Spinner/Spinner';
 
 
 
 const Login = () => {
+    
 
     useTitle('Login')
-    const { logIn, providerLogin } = useContext(AuthContext)
+    const { logIn, providerLogin,loader } = useContext(AuthContext)
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -78,6 +80,7 @@ const Login = () => {
     }
     return (
         <div className="hero w-full my-20">
+             <h1 className=''>{loader && <Spinner></Spinner>}</h1>
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
                 <div className="text-center lg:text-left">
                     <img className='w-3/4' src={loginimg} alt="" />
