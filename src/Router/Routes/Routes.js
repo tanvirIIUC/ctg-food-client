@@ -8,6 +8,7 @@ import Register from "../../Pages/Home/Register/Register";
 import Login from "../../Pages/Login/Login";
 import MyReview from "../../Pages/MyReview/MyReview";
 import ServiceDetails from "../../Pages/ServicesDetails/ServiceDetails";
+import UpdateReview from "../../Pages/UpdateReview/UpdateReview";
 import PrivateRoute from "../PrivateRouter/PrivateRoute";
 
 const router = createBrowserRouter([
@@ -39,6 +40,12 @@ const router = createBrowserRouter([
         {
             path:'/myReview',
             element:<MyReview></MyReview>,
+           
+        },
+        {
+            path:'/updateReview/:id',
+            element:<UpdateReview></UpdateReview>,
+            loader: ({params})=> fetch(`http://localhost:5000/updateReview/${params.id}`)
            
         },
         {

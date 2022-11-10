@@ -33,9 +33,11 @@ const MyReview = () => {
      }
     return (
         <div className='container mx-auto my-10'>
+          
             {
                 review.length?
                     <>
+                      <h1 className='font-bold text-center text-3xl my-5'>My All Review</h1>
                      <div className="overflow-x-auto w-full">
                 <table className="table w-full">
 
@@ -47,7 +49,7 @@ const MyReview = () => {
                             <th>Title</th>
                             <th>Review</th>
                             <th>Email</th>
-                            <th></th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>
