@@ -20,10 +20,10 @@ const Header = () => {
         <>
           <li><Link to="/myReview">MyReview</Link></li>
           <li><Link to="/addfood">Add Food</Link></li>
-          <li><Link className='me-2' onClick={signOut}> Logout</Link></li>
+          
         </>
         :
-        <li><Link to="/login">Login</Link></li>
+        <li></li>
     }
 
   </>
@@ -38,7 +38,11 @@ const Header = () => {
             {menuItems}
           </ul>
         </div>
+        <div className='flex'>
+        <img className='w-10' src="favicon.ico" alt="" />
         <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold">CTG FOOD</Link>
+        </div>
+        
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal p-0">
@@ -46,7 +50,17 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Get started</a>
+      {
+      user?.email ?
+        <>
+         
+          <Link className='me-2 btn' onClick={signOut}> Logout</Link>
+        </>
+        :
+        <Link to="/login" className='me-2 btn'>Login</Link>
+    }
+
+        {/* <a className="btn">Get started</a> */}
       </div>
     </div>
   );

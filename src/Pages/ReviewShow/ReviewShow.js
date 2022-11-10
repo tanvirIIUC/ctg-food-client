@@ -9,9 +9,11 @@ const ReviewShow = ({ id }) => {
             .then(res => res.json())
             .then(data => setReview(data))
     }, [])
-    console.log(reviews)
+    // console.log(reviews)
     const results = reviews.filter(review => review.service === id);
-    console.log(results)
+    // console.log(results)
+    
+    results.reverse();
     return (
         <div>
             <h1 className='text-center font-bold text-3xl py-5'>Review</h1>

@@ -1,4 +1,4 @@
-import { clear } from '@testing-library/user-event/dist/clear';
+
 import React, { useContext, useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import loginimg from '../../Assets/login.jpg'
@@ -10,11 +10,13 @@ import Spinner from '../Spinner/Spinner';
 
 
 
+
+
 const Login = () => {
-    
+
 
     useTitle('Login')
-    const { logIn, providerLogin,loader } = useContext(AuthContext)
+    const { logIn, providerLogin, loader } = useContext(AuthContext)
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -80,8 +82,10 @@ const Login = () => {
     }
     return (
         <div className="hero w-full my-20">
-             <h1 className=''>{loader && <Spinner></Spinner>}</h1>
+            <h1 className=''>{loader && <Spinner></Spinner>}</h1>
             <div className="hero-content grid gap-20 md:grid-cols-2 flex-col lg:flex-row">
+
+            
                 <div className="text-center lg:text-left">
                     <img className='w-3/4' src={loginimg} alt="" />
                 </div>
@@ -103,13 +107,18 @@ const Login = () => {
 
                         </div>
                         <div className="form-control mt-6 ">
-                            <input className="btn btn-primary" type="submit" value="Sign in" />
-                            <p className='text-center mt-4'>login with  <button onClick={handleGoogleSignIn} className='text-orange-600 font-bold '><AiOutlineGoogle /></button> </p>
+                            <input className="btn btn-primary" type="submit" value="Log in" />
+
 
                         </div>
 
                     </form>
-                    <p className='text-center'>Already haven't an account? <Link to='/register' className='text-orange-600 font-bold'>Register</Link> </p>
+                    <div className='flex flex-col items-center'>
+                    <p className='text-center mt-4 text-xl'>login with   </p>
+                    <button onClick={handleGoogleSignIn} className='text-orange-600 font-bold text-3xl '><AiOutlineGoogle /></button>
+                    </div>
+                    
+                    <small className='text-center'>Already haven't an account? <Link to='/register' className='text-orange-600 font-bold text-xl'>Register</Link> </small>
                 </div>
             </div>
         </div>

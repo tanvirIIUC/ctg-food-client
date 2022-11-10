@@ -1,4 +1,5 @@
 import React from 'react';
+import { PhotoView } from 'react-photo-view';
 import useTitle from '../../hooks/useTitle';
 
 const Blogs = () => {
@@ -6,7 +7,7 @@ const Blogs = () => {
     return (
         <div className='container mx-auto my-10'>
             <h1 className=' font-bold text-2xl text-center'>Blogs</h1>
-
+              
             <div className="card  bg-base-100 shadow-xl my-5">
                 <div className="card-body">
                     <h2 className="card-title">Difference between SQL and NoSQL</h2>

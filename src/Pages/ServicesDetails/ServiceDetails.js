@@ -10,7 +10,7 @@ const ServiceDetails = () => {
     useTitle('Service Details')
     const { _id, title, img, price, description } = useLoaderData();
     const { user } = useContext(AuthContext);
-    console.log(user)
+    // console.log(user)
 
 
 
