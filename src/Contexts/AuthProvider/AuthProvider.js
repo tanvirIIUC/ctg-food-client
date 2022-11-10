@@ -32,7 +32,8 @@ const AuthProvider = ({ children }) => {
      }
     //log out
     const logOut = ()=>{
-        setLoader(true);
+        // setLoader(true);
+        localStorage.removeItem('genius-token');
         return signOut(auth);
     }
 
@@ -52,7 +53,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log(currentUser);
+            // console.log(currentUser);
             setUser(currentUser);
             setLoader(false);
 

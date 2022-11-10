@@ -1,16 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
+
 import { AuthContext } from '../../Contexts/AuthProvider/AuthProvider';
 
 import MyReviewRow from './MyReviewRow';
 
 const MyReview = () => {                                                           
-    const { user } = useContext(AuthContext);
+    const { user,logOut } = useContext(AuthContext);
     const [review, setReview] = useState([])
-    console.log(user)
+    // console.log(user)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myReview?email=${user?.email}`)
-            .then(res => res.json())
+        fetch(`http://localhost:5000/myReview?email=${user?.email}`,{
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('genius-token')}`
+            }
+        })
+            .then(res =>{
+             /*  if(res.status === 401 || res.status === 403){
+
+              return logOut()
+              } */
+              return res.json()
+            } )
             .then(data => setReview(data))
     }, [user?.email])
 
@@ -35,7 +46,7 @@ const MyReview = () => {
         <div className='container mx-auto my-10'>
           
             {
-                review.length?
+                review?.length?
                     <>
                       <h1 className='font-bold text-center text-3xl my-5'>My All Review</h1>
                      <div className="overflow-x-auto w-full">

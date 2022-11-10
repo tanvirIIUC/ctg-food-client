@@ -58,10 +58,10 @@ const ReviewAdd = () => {
                         <input className="btn btn-wide my-4" type="submit" value='submit review' />
                     </form>
                     :
-                    <>
-                        <h1>Please Log in to add review</h1>
-                        <Link to='/login'> Log in</Link>
-                    </>
+                    <div className='text-center my-10'>
+                        <h1 className='text-3xl font-bold'>Please Log in to add review</h1>
+                        <Link className="btn btn-wide my-5" to='/login'> Log in</Link>
+                    </div>
 
 
 
