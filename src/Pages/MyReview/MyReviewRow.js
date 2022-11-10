@@ -6,12 +6,12 @@ const MyReviewRow = ({ result, handleDelete }) => {
     const [revservice, setRevservice] = useState({})
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services/${service}`)
+        fetch(`https://ctg-food-server.vercel.app/services/${service}`)
             .then(res => res.json())
             .then(data => setRevservice(data))
     }, [service])
 
-   
+
 
 
     return (
@@ -49,7 +49,7 @@ const MyReviewRow = ({ result, handleDelete }) => {
                     <Link to={`/updateReview/${_id}`}>
                         <button className='btn btn-square btn-outline'>Edit</button>
                     </Link>
-                    
+
                 </label>
             </th>
 

@@ -5,7 +5,7 @@ const ReviewShow = ({ id }) => {
     const [reviews, setReview] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://ctg-food-server.vercel.app/review')
             .then(res => res.json())
             .then(data => setReview(data))
     }, [])
@@ -14,7 +14,7 @@ const ReviewShow = ({ id }) => {
     console.log(results)
     return (
         <div>
-             <h1 className='text-center font-bold text-3xl py-5'>Review</h1>
+            <h1 className='text-center font-bold text-3xl py-5'>Review</h1>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
                     <thead>
